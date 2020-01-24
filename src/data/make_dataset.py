@@ -95,7 +95,7 @@ def make_dataset_1():
 
 
 def make_dataset_2():
-    ttRange = 12000  # 120 hours in .01 increments
+    ttRange = 12000  # 120 hours in .01 incresments
     versRange2 = 7
     features2 = ["mode", "speed", "fe", "tt", "vers", "consumption"]
     rows2 = []
