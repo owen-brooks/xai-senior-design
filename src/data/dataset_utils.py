@@ -1,5 +1,6 @@
 from scipy.stats import truncnorm
 
+
 def calc_trip_consumption(tf, td, to, ei, vers=0):
     """Calculate personal energy consumption for a trip
 
@@ -13,7 +14,7 @@ def calc_trip_consumption(tf, td, to, ei, vers=0):
     if vers == 0:
         return (tf * (td / to)) * ei  # default
     elif vers == 1:
-        return ((tf ** 2) * (td / 3 * to)) * ei
+        return ((tf * 2) * (td / to * 3)) * ei
     elif vers == 2:
         return (tf * (td / to)) * (ei ** 0.5)
     elif vers == 3:
@@ -27,7 +28,7 @@ def calc_trip_consumption(tf, td, to, ei, vers=0):
     elif vers == 7:
         return ((tf ** 0.5) * (td / to)) * (ei ** 2)
     elif vers == 8:
-        return ((tf ** 2) * (td / to)) * (ei ** 0.5)
+        return ((tf * 3) * (td / to)) * (ei ** 0.5)
     elif vers == 9:
         return (tf * (td / (to ** 0.5))) * ei
 

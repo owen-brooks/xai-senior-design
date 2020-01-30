@@ -12,11 +12,11 @@ from src.data.dataset_utils import (
 
 """
 ## MODE (From Shideh's Notebook)
-# 8(taxi)== 10(shutte),13(private transit), 9 (rental car), 19(paratansit)
+# 8(taxi)== 10(shuttel),13(private transit), 9 (rental car), 19(paratansit)
 #22 (rail) == 28(other rail), 23 (trolly..), 24(NI commuter rail), 25(ni rail)
 # 21(subway) == 27(train), 26 (pastco)
 #14(bus) == 17(amtrak bus), 15== transit bus , 20(otherbus)
-# 2 (bikE) == 3(weelchair), 3(other non mot), 7(mope, motor)
+# 2 (bikE) == 3(wheelchair), 3(other non mot), 7(mope, motor)
 """
 modes_key = {
     5: "Private Vehicle",
@@ -26,8 +26,7 @@ modes_key = {
     26: "school bus",
     22: "rail/trolly/pastco",
 }
-modes_ei = {5: 1.354954955, 8: 1.21, 21: 0.5899,
-            14: 0.7872, 26: 4.814285714, 22: 0.933}
+modes_ei = {5: 1.354954955, 8: 1.21, 21: 0.5899, 14: 0.7872, 26: 4.814285714, 22: 0.933}
 modes_to = {5: get_car_to(), 8: 3, 21: 75, 14: 55, 26: 26, 22: 120}
 
 modes2_key = {
@@ -41,6 +40,7 @@ modes2_key = {
 modes2_fe = {0: 0.7872, 1: 0.7872, 2: 0.5899, 3: 1.3747, 4: 0.9331, 5: 1.21}
 modes2_speed = {0: 7.64, 1: 7.64, 2: 18.21, 3: 10.46, 4: 34.13, 5: 22.21}
 modes = list(modes_key.keys())
+
 
 def make_dataset_1():
     tfRange = 21
@@ -89,13 +89,13 @@ def make_dataset_1():
                             ),
                         ]
                     )
-
+    print(f"successfully generated dataset | num_rows: {len(rows)}")
     df2 = pd.DataFrame(rows, columns=features)
     return df2
 
 
 def make_dataset_2():
-    ttRange = 12000  # 120 hours in .01 incresments
+    ttRange = 12000  # 120 hours in .01 increments
     versRange2 = 7
     features2 = ["mode", "speed", "fe", "tt", "vers", "consumption"]
     rows2 = []
@@ -116,5 +116,6 @@ def make_dataset_2():
                     ]
                 )
 
+    print(f"successfully generated dataset | num_rows: {len(rows2)}")
     df3 = pd.DataFrame(rows2, columns=features2)
     return df3
