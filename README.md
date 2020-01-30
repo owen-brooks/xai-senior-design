@@ -8,10 +8,10 @@
 ├── models              # saved models
 ├── data                # datasets
 ├── notebooks           # jupyter notebooks 
-├── reports
+├── reports             # visualizations, papers, etc.
 ├── src
 │   ├── data            # code to generate datasets
 │   ├── models          # code to train and test models
-│   └── utils           # misc util functions
+│   └── utils           # misc utility functions
 └── ...
 ```
