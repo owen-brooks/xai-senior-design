@@ -1,5 +1,14 @@
 # xai-senior-design
 
+## instructions
+
+to run the jupyter notebooks:
+
+```
+cd notebooks
+jupyter notebook
+```
+
 ## project structure
 [taken from here](https://medium.com/@rrfd/cookiecutter-data-science-organize-your-projects-atom-and-jupyter-2be7862f487e)
 
