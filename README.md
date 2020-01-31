@@ -1,6 +1,8 @@
 # xai-senior-design
 > comparing and contrasting eXplainable AI methods
 
+![Alt text](docs/../docs/team_logo.jpeg)
+
 this repository contains the code written for our senior project
 
 view the team website [here](http://www.cci.drexel.edu/SeniorDesign/2019_2020/Explainable_AI//explainable-ai-index.html)
@@ -30,7 +32,7 @@ taken from [here](https://medium.com/@rrfd/cookiecutter-data-science-organize-yo
 ├── models              # saved models
 ├── data                # datasets
 ├── notebooks           # jupyter notebooks 
-├── reports             # visualizations, papers, etc.
+├── docs                # visualizations, papers, etc.
 ├── src
 │   ├── data            # code to generate datasets
 │   ├── models          # code to train and test models
