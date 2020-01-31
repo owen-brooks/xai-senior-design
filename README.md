@@ -7,7 +7,7 @@ this repository contains the code written for our senior project
 
 view the team website [here](http://www.cci.drexel.edu/SeniorDesign/2019_2020/Explainable_AI//explainable-ai-index.html)
 
-## background
+## background info
 
 1. **problem:** complex AI systems are hard to be interpreted by human users 
 
