@@ -21,9 +21,10 @@ def load_df(file_path):
     df = pd.read_csv(file_path)
     return df
 
+
 def save_model(model, filename):
     """Saves model to model dir"""
     file_path = os.path.join(ROOT_DIR, "models", filename)
     model.save(file_path)
     print(f"model successfully saved | file_location: {file_path}")
-    
+
