@@ -2,6 +2,8 @@ import pandas as pd
 import os
 import sys
 
+from tensorflow.keras.models import load_model
+
 CURR_DIR = os.path.dirname(os.path.realpath("__file__"))
 ROOT_DIR = os.path.abspath(os.path.join(CURR_DIR, ".."))
 
@@ -28,3 +30,10 @@ def save_model(model, filename):
     model.save(file_path)
     print(f"model successfully saved | file_location: {file_path}")
 
+
+def load_model(model, filename):
+    """Saves model to model dir"""
+    file_path = os.path.join(ROOT_DIR, "models", filename)
+    model = load_model(file_path)
+    print(f"model successfully loaded")
+    return model
