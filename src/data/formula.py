@@ -2,7 +2,7 @@ from scipy.stats import truncnorm
 
 
 def calc_trip_consumption(tf, td, to, ei, vers=0):
-    """Calculate personal energy consumption for a trip
+    """Modify input variables to match varations
 
     Uses different variations of the formula
     :param tf: Trip Frequency
@@ -12,29 +12,39 @@ def calc_trip_consumption(tf, td, to, ei, vers=0):
     :param vers: version of forumla, defaults to actual formula
     """
     if vers == 0:
-        return (tf * (td / to)) * ei  # default
+        #(tf * (td / to)) * ei  # default
+        return tf, td, to, ei
     elif vers == 1:
-        return ((tf * 2) * (td / to * 3)) * ei
+        #((tf * 2) * (td / to * 3)) * ei
+        return tf * 2, td, to * 3, ei
     elif vers == 2:
-        return (tf * (td / to)) * (ei ** 0.5)
+        #(tf * (td / to)) * (ei ** 0.5)
+        return tf, td, to, ei ** 0.5
     elif vers == 3:
-        return ((tf ** 0.5) * (td / to)) * ei
+        #((tf ** 0.5) * (td / to)) * ei
+        return tf ** 0.5, td, to, ei
     elif vers == 4:
-        return tf * (td / (to)) * (ei ** 2)
+        #tf * (td / (to)) * (ei ** 2)
+        return tf, td, to, ei ** 2
     elif vers == 5:
-        return tf * (2 * td / (to)) * (ei)
+        #tf * (2 * td / (to)) * (ei)
+        return tf, 2 * td, to, ei   
     elif vers == 6:
-        return (tf * (td / to ** 2)) * ei
+        #(tf * (td / to ** 2)) * ei
+        return tf, td, to ** 2, ei
     elif vers == 7:
-        return ((tf ** 0.5) * (td / to)) * (ei ** 2)
+        #((tf ** 0.5) * (td / to)) * (ei ** 2)
+        return tf ** 0.5, td, to, ei ** 2
     elif vers == 8:
-        return ((tf * 3) * (td / to)) * (ei ** 0.5)
+        #((tf * 3) * (td / to)) * (ei ** 0.5)
+        return tf * 3, td, to, ei ** 0.5
     elif vers == 9:
-        return (tf * (td / (to ** 0.5))) * ei
+        #(tf * (td / (to ** 0.5))) * ei
+        return tf, td, to ** 0.5, ei
 
 
 def calc_trip_consumption_2(tt, speed, fe, vers=0):
-    """Calculate the energy consumption for a trip
+    """Modify input variables to match varations
 
     Uses different variation of the formula
     :param tt: travel time (hrs)
@@ -44,19 +54,26 @@ def calc_trip_consumption_2(tt, speed, fe, vers=0):
     """
 
     if vers == 0:
-        return tt * speed * fe  # default
+        #tt * speed * fe  # default
+        return tt, speed, fe  # default
     elif vers == 1:
-        return (tt ** 2) * speed * fe
+        #(tt ** 2) * speed * fe
+        return tt ** 2, speed, fe
     elif vers == 2:
-        return tt * (speed ** 2) * fe
+        #tt * (speed ** 2) * fe
+        return tt, speed ** 2, fe
     elif vers == 3:
-        return tt * speed * (fe ** 2)
+        #tt * speed * (fe ** 2)
+        return tt, speed, fe ** 2
     elif vers == 4:
-        return (tt ** 0.5) * speed * fe
+        #(tt ** 0.5) * speed * fe
+        return tt ** 0.5, speed, fe
     elif vers == 5:
-        return tt * (speed ** 0.5) * fe
+        #tt * (speed ** 0.5) * fe
+        return tt, speed ** 0.5, fe
     elif vers == 6:
-        return tt * speed * (fe ** 0.5)
+        #tt * speed * (fe ** 0.5)
+        return tt, speed, fe ** 0.5
 
 
 def gen_rand_vals(mu, sigma, lower, upper, N):
