@@ -8,19 +8,18 @@ CURR_DIR = os.path.dirname(os.path.realpath("__file__"))
 ROOT_DIR = os.path.abspath(os.path.join(CURR_DIR, ".."))
 
 
-def save_df(df, filename, sub_dir=None):
+def save_df(df, filename, sub_dir=None, withIndex=False):
     """Saves df to data dir as csv"""
     data_dir = os.path.join(ROOT_DIR, "data")
     if sub_dir:
         data_dir = os.path.join(data_dir, sub_dir)
-    df.to_csv(os.path.join(data_dir, filename), index=False)
-    print(f"df successfully saved | filename: {filename}, dir: {data_dir}")
+    df.to_csv(os.path.join(data_dir, filename), index=withIndex)
+    print(f"df successfully saved | filename: {filename}, dir: {data_dir}")    
 
-
-def load_df(file_path):
+def load_df(file_path, indexCol=None):
     """loads df from data dir"""
     file_path = os.path.join(ROOT_DIR, "data", file_path)
-    df = pd.read_csv(file_path)
+    df = pd.read_csv(file_path, index_col=indexCol)
     return df
 
 
