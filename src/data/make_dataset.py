@@ -1,7 +1,7 @@
 import pandas as pd
 import random
 
-from src.data.dataset_utils import (
+from src.data.formula import (
     calc_trip_consumption,
     calc_trip_consumption_2,
     gen_rand_vals,
@@ -46,7 +46,7 @@ def make_dataset_1():
     tfRange = 21
     versRange = 10
     tdRange = 1301  # 0 to 130 in 0.1 increments
-    features = ["mode", "ei", "to", "td", "tf", "vers", "consumption"]
+    features = ["mode", "ei", "to", "td", "tf", "vers"]
     rows = []
     for modeNum in range(
         1, 6
@@ -56,17 +56,15 @@ def make_dataset_1():
             for tf in range(1, tfRange):
                 for tdCount in range(1, tdRange):
                     td = tdCount / 10
+                    tfi, tdi, toi, eii = calc_trip_consumption(tf, td, modes_to[mode], modes_ei[mode], vers=vers)
                     rows.append(
                         [
                             mode,
-                            modes_ei[mode],
-                            modes_to[mode],
-                            td,
-                            tf,
+                            eii,
+                            toi,
+                            tdi,
+                            tfi,
                             vers,
-                            calc_trip_consumption(
-                                tf, td, modes_to[mode], modes_ei[mode], vers=vers
-                            ),
                         ]
                     )
     # do private vehicle now
@@ -76,17 +74,15 @@ def make_dataset_1():
             for tf in range(1, tfRange):
                 for tdCount in range(1, tdRange):
                     td = tdCount / 10
+                    tfi, tdi, toi, eii = calc_trip_consumption(tf, td, to, modes_ei[mode], vers=vers)
                     rows.append(
                         [
                             mode,
-                            modes_ei[mode],
-                            to,
-                            td,
-                            tf,
+                            eii,
+                            toi,
+                            tdi,
+                            tfi,
                             vers,
-                            calc_trip_consumption(
-                                tf, td, modes_to[mode], modes_ei[mode], vers=vers
-                            ),
                         ]
                     )
     print(f"successfully generated dataset | num_rows: {len(rows)}")
@@ -97,22 +93,20 @@ def make_dataset_1():
 def make_dataset_2():
     ttRange = 12000  # 120 hours in .01 increments
     versRange2 = 7
-    features2 = ["mode", "speed", "fe", "tt", "vers", "consumption"]
+    features2 = ["mode", "speed", "fe", "tt", "vers"]
     rows2 = []
     for mode2 in range(6):
         for vers2 in range(versRange2):
             for ttCount in range(ttRange):
                 tt = ttCount * 0.01
+                tti, speedi, fei = calc_trip_consumption_2(tt, modes2_speed[mode2], modes2_fe[mode2], vers=vers2) 
                 rows2.append(
                     [
                         mode2,
-                        modes2_speed[mode2],
-                        modes2_fe[mode2],
-                        tt,
+                        speedi,
+                        fei,
+                        tti,
                         vers2,
-                        calc_trip_consumption_2(
-                            tt, modes2_speed[mode2], modes2_fe[mode2], vers=vers2
-                        ),
                     ]
                 )
 
