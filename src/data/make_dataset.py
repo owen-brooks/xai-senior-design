@@ -52,6 +52,7 @@ def make_dataset_1():
         1, 6
     ):  # skip private vehicle because it has multiple values for to
         mode = modes[modeNum]
+        mode_name = modes_key[mode]
         for vers in range(versRange):
             for tf in range(1, tfRange):
                 for tdCount in range(1, tdRange):
@@ -59,7 +60,7 @@ def make_dataset_1():
                     tfi, tdi, toi, eii = calc_trip_consumption(tf, td, modes_to[mode], modes_ei[mode], vers=vers)
                     rows.append(
                         [
-                            mode,
+                            mode_name,
                             eii,
                             toi,
                             tdi,
@@ -69,6 +70,7 @@ def make_dataset_1():
                     )
     # do private vehicle now
     mode = modes[0]
+    mode_name = modes_key[mode]
     for to in range(1, 6):
         for vers in range(versRange):
             for tf in range(1, tfRange):
@@ -77,7 +79,7 @@ def make_dataset_1():
                     tfi, tdi, toi, eii = calc_trip_consumption(tf, td, to, modes_ei[mode], vers=vers)
                     rows.append(
                         [
-                            mode,
+                            mode_name,
                             eii,
                             toi,
                             tdi,
@@ -96,13 +98,14 @@ def make_dataset_2():
     features2 = ["mode", "speed", "fe", "tt", "vers"]
     rows2 = []
     for mode2 in range(6):
+        mode_name = modes2_key[mode2]
         for vers2 in range(versRange2):
             for ttCount in range(ttRange):
                 tt = ttCount * 0.01
                 tti, speedi, fei = calc_trip_consumption_2(tt, modes2_speed[mode2], modes2_fe[mode2], vers=vers2) 
                 rows2.append(
                     [
-                        mode2,
+                        mode_name,
                         speedi,
                         fei,
                         tti,
